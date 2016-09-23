@@ -25,6 +25,7 @@ REM along with this program.  If not, see <http://www.gnu.org/licenses/>.
     Dim strMinuten As String
     Dim arrHun() As String
     Dim singArbeitstag As Single
+    Dim strTmpMin As String
     
     singArbeitstag = 7.6
     
@@ -54,7 +55,12 @@ REM along with this program.  If not, see <http://www.gnu.org/licenses/>.
             strMinuten = "00"
             
             If UBound(arrHun()) > 0 Then
-                intIMin = Left(arrHun(1), 2)
+                strTmpMin = Left(arrHun(1), 2)
+                If Len(strTmpMin) = 1 Then
+                    strTmpMin = strTmpMin & "0"
+                End If
+                
+                intIMin = CInt(strTmpMin)
                 intNMin = (intIMin / 5) * 3
                 strMinuten = CStr(intNMin)
                 strMinuten = AddZeroFirst(strMinuten)
